@@ -1,0 +1,33 @@
+ADMIN
+1.Can see all the patients. 
+2. Has to login to set that each register user is doctor or simple user. 
+3. Only the admin is allowed to add the vaccine data to the user. 
+4. When add the vaccine data, the admin has to input the user who takes the vaccine, the doctor who is in charge of this patient, and the vaccine the user get, and the is it the first does, or second dose. 
+
+USER
+1. Can see only their own data. 
+
+DOCTOR
+1. Can edit comment.
+2. Can add the comments to the patient.
+3. Can see the list of patients he/she is in charge. 
+
+4. The registration page is needed to add the user data.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

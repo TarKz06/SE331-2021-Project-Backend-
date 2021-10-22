@@ -1,6 +1,7 @@
 package se331.lab.rest.entity;
 
 import lombok.*;
+import org.hibernate.annotations.ManyToAny;
 import se331.lab.rest.security.entity.User;
 
 import javax.persistence.*;
@@ -12,16 +13,27 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Organizer {
+public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
     Long id;
     String name;
-    @OneToMany(mappedBy = "organizer")
-    @Builder.Default
-    List<Event> ownEvents = new ArrayList<>();
+    String surname;
+    Integer age;
+    String gender;
+    String hometown;
+    Integer status;
+
+    @ManyToOne
+    Doctor doctor;
+
+    @ManyToMany(mappedBy = "patientVaccineHistory")
+    List<Vaccine> vaccines = new ArrayList<>();
+
+    @ElementCollection
+    List<String> imageUrls;
+
     @OneToOne
     User user;
-
 }

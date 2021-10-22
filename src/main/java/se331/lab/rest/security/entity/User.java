@@ -7,7 +7,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import se331.lab.rest.entity.Organizer;
+import se331.lab.rest.entity.Admin;
+import se331.lab.rest.entity.Doctor;
+import se331.lab.rest.entity.Patient;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -63,6 +65,12 @@ public class User {
     private List<Authority> authorities = new ArrayList<>();
 
     @OneToOne
-    Organizer organizer;
+    Doctor doctor;
+
+    @OneToOne
+    Admin admin;
+
+    @OneToOne
+    Patient patient;
 
 }

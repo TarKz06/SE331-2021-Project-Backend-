@@ -5,15 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrganizerDTO {
+public class DoctorDTO {
     Long id;
     String name;
-    List<OrganizerOwnEventsDTO> ownEvents = new ArrayList<>();
+    List<DoctorOwnPatientsDTO> ownPatients = new ArrayList<>();
 }

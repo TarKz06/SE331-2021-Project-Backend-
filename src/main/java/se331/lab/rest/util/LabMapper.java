@@ -12,14 +12,14 @@ import java.util.stream.Collectors;
 @Mapper(imports = Collectors.class)
 public interface LabMapper {
     LabMapper INSTANCE = Mappers.getMapper(LabMapper.class);
-    EventDTO getEventDto(Event event);
-    List<EventDTO> getEventDto(List<Event> events);
+    PatientDTO getPatientDto(Patient patient);
+    List<PatientDTO> getPatientDto(List<Patient> patients);
 
     UserDTO getUserDTO(User user);
 
-    OrganizerDTO getOrganizerDTO(Organizer organizer);
-    List<OrganizerDTO> getOrganizerDTO(List<Organizer> organizers);
-    @Mapping(target = "authorities", expression = "java(organizer.getUser().getAuthorities().stream().map(auth -> auth.getName().name()).collect(Collectors.toList()))")
-    OrganizerAuthDTO getOrganizerAuthDTO(Organizer organizer);
+    DoctorDTO getDoctorDTO(Doctor doctor);
+    List<DoctorDTO> getDoctorDTO(List<Doctor> doctors);
+    @Mapping(target = "authorities", expression = "java(doctor.getUser().getAuthorities().stream().map(auth -> auth.getName().name()).collect(Collectors.toList()))")
+    DoctorAuthDTO getDoctorAuthDTO(Doctor doctor);
 
 }

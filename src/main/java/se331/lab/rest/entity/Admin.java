@@ -1,6 +1,7 @@
 package se331.lab.rest.entity;
 
 import lombok.*;
+import se331.lab.rest.security.entity.User;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,13 +11,13 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Participant {
+public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
     Long id;
     String name;
-    String telNo;
-    @ManyToMany
-    List<Event> eventHistory;
+
+    @OneToOne
+    User user;
 }

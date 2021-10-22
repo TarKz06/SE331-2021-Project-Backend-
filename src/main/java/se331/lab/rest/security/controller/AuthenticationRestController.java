@@ -15,7 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import se331.lab.rest.repository.OrganizerRepository;
+import se331.lab.rest.repository.DoctorRepository;
 import se331.lab.rest.security.JwtTokenUtil;
 import se331.lab.rest.security.entity.Authority;
 import se331.lab.rest.security.entity.AuthorityName;
@@ -52,7 +52,7 @@ public class AuthenticationRestController {
     AuthorityRepository authorityRepository;
 
     @Autowired
-    OrganizerRepository organizerRepository;
+    DoctorRepository doctorRepository;
 
     @PostMapping("${jwt.route.authentication.path}/User")
     public ResponseEntity<?> Register(@RequestBody User user)throws AuthenticationException {
@@ -62,12 +62,12 @@ public class AuthenticationRestController {
         user.setEnabled(true);
         user.setPassword(encoder.encode(user.getPassword()));
         user.getAuthorities().add(authUser);
-        user.setOrganizer(organizerRepository.getById(2L));
+        user.setDoctor(doctorRepository.getById(2L));
 
         Map result = new HashMap();
         User output = userRepository.save(user);
         result.put("user",LabMapper.INSTANCE.getUserDTO(output));
-        result.put("Organizer",  LabMapper.INSTANCE.getOrganizerAuthDTO(user.getOrganizer()));
+        result.put("Doctor",  LabMapper.INSTANCE.getDoctorAuthDTO(user.getDoctor()));
 
         return ResponseEntity.ok(result);
     }
@@ -89,8 +89,8 @@ public class AuthenticationRestController {
         Map result = new HashMap();
         result.put("token", token);
         User user = userRepository.findById(((JwtUser) userDetails).getId()).orElse(null);
-            if (user.getOrganizer() != null) {
-                result.put("user", LabMapper.INSTANCE.getOrganizerAuthDTO( user.getOrganizer()));
+            if (user.getDoctor() != null) {
+                result.put("user", LabMapper.INSTANCE.getDoctorAuthDTO( user.getDoctor()));
             }
 
         return ResponseEntity.ok(result);

@@ -68,6 +68,8 @@ public class AuthenticationRestController {
         User output = userRepository.save(user);
         result.put("user",LabMapper.INSTANCE.getUserDTO(output));
         result.put("Doctor",  LabMapper.INSTANCE.getDoctorAuthDTO(user.getDoctor()));
+        result.put("Patient",  LabMapper.INSTANCE.getPatientDto(user.getPatient()));
+
 
         return ResponseEntity.ok(result);
     }
@@ -91,7 +93,9 @@ public class AuthenticationRestController {
         User user = userRepository.findById(((JwtUser) userDetails).getId()).orElse(null);
             if (user.getDoctor() != null) {
                 result.put("user", LabMapper.INSTANCE.getDoctorAuthDTO( user.getDoctor()));
-            }
+            } else if (user.getPatient() != null){
+                result.put("user", LabMapper.INSTANCE.getPatientDto( user.getPatient()));
+        }
 
         return ResponseEntity.ok(result);
     }

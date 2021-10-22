@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.ElementCollection;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -25,4 +26,6 @@ public class PatientDTO {
     Doctor doctor;
     List<Vaccine> vaccines;
     List<String> imageUrls;
+    List<String> authorities;
+    UserDTO user;
 }

@@ -62,7 +62,6 @@ public class AuthenticationRestController {
         user.setEnabled(true);
         user.setPassword(encoder.encode(user.getPassword()));
         user.getAuthorities().add(authUser);
-        user.setDoctor(doctorRepository.getById(2L));
 
         Map result = new HashMap();
         User output = userRepository.save(user);

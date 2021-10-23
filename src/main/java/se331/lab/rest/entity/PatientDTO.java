@@ -23,9 +23,7 @@ public class PatientDTO {
     String gender;
     String hometown;
     Integer status;
-    Doctor doctor;
-    List<Vaccine> vaccines;
-    List<String> imageUrls;
-    List<String> authorities;
-    UserDTO user;
+    PatientDoctorDTO doctor;
+
+
 }

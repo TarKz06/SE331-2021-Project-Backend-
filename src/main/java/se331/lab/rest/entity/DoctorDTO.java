@@ -14,5 +14,5 @@ import java.util.List;
 public class DoctorDTO {
     Long id;
     String name;
-    List<DoctorOwnPatientsDTO> ownPatients = new ArrayList<>();
+    List<DoctorOwnPatientsDTO> ownPatients;
 }

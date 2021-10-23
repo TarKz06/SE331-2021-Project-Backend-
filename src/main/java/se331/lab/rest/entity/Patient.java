@@ -29,7 +29,7 @@ public class Patient {
     Doctor doctor;
 
     @ManyToMany(mappedBy = "patientVaccineHistory")
-    List<Vaccine> vaccines = new ArrayList<>();
+    List<Vaccine> vaccines;
 
     @ElementCollection
     List<String> imageUrls;

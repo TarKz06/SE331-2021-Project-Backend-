@@ -21,7 +21,7 @@ public class Doctor {
     @OneToMany(mappedBy = "doctor")
     @Builder.Default
     List<Patient> ownPatients = new ArrayList<>();
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     User user;
 
 }

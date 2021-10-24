@@ -16,7 +16,10 @@ public interface LabMapper {
     List<PatientDTO> getPatientDto(List<Patient> patients);
 
     UserDTO getUserDTO(User user);
+    List<UserDTO> getUserDTO(List<User> user);
 
-    DoctorDTO getDoctorDTO(Doctor doctor);
-    List<DoctorDTO> getDoctorDTO(List<Doctor> doctors);
+    DoctorDTO getDoctorDto(Doctor doctor);
+    List<DoctorDTO> getDoctorDto(List<Doctor> doctors);
+
+
 }

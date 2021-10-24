@@ -62,12 +62,11 @@ public class AuthenticationRestController {
         user.setEnabled(true);
         user.setPassword(encoder.encode(user.getPassword()));
         user.getAuthorities().add(authUser);
-        user.setDoctor(doctorRepository.getById(2L));
 
         Map result = new HashMap();
         User output = userRepository.save(user);
         result.put("user",LabMapper.INSTANCE.getUserDTO(output));
-        result.put("Doctor",  LabMapper.INSTANCE.getDoctorDTO(user.getDoctor()));
+        result.put("Doctor",  LabMapper.INSTANCE.getDoctorDto(user.getDoctor()));
         result.put("Patient",  LabMapper.INSTANCE.getPatientDto(user.getPatient()));
 
 
@@ -92,7 +91,7 @@ public class AuthenticationRestController {
         result.put("token", token);
         User user = userRepository.findById(((JwtUser) userDetails).getId()).orElse(null);
             if (user.getDoctor() != null) {
-                result.put("user", LabMapper.INSTANCE.getDoctorDTO( user.getDoctor()));
+                result.put("user", LabMapper.INSTANCE.getDoctorDto( user.getDoctor()));
             } else if (user.getPatient() != null){
                 result.put("user", LabMapper.INSTANCE.getPatientDto( user.getPatient()));
         }

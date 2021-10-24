@@ -64,6 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
                 .antMatchers("/auth/**",  "/refresh").permitAll()
+
                 //add more 5.1 plist without login
                 .antMatchers(HttpMethod.GET,"/plists").hasAnyRole("PATIENT, ADMIN")
                 .antMatchers(HttpMethod.GET,"/plists/**").hasAnyRole("PATIENT, ADMIN")
@@ -73,6 +74,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET,"/admins").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET,"/users").hasAnyRole("USER, ADMIN")
                 .antMatchers(HttpMethod.GET,"/users/**").hasAnyRole("USER, ADMIN")
+
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .anyRequest().authenticated();
 

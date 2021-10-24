@@ -10,7 +10,6 @@ import se331.lab.rest.entity.Patient;
 import se331.lab.rest.repository.PatientRepository;
 
 @Repository
-@Profile("db")
 public class PatientDaoDbImpl implements PatientDao {
     @Autowired
     PatientRepository patientRepository;

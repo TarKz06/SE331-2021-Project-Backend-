@@ -17,6 +17,7 @@ public class PatientServiceImpl implements PatientService {
     PatientDao patientDao;
     @Autowired
     DoctorDao doctorDao;
+
     @Override
     public Integer getPatientSize() {
         return patientDao.getPatientSize();

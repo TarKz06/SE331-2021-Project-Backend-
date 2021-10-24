@@ -7,7 +7,12 @@ import se331.lab.rest.entity.Doctor;
 import java.util.Optional;
 
 public interface DoctorDao {
-    Page<Doctor> getDoctor(Pageable pageRequest);
+    Integer getDoctorSize();
+    Page<Doctor> getDoctors(Integer pageSize, Integer page);
+    Doctor getDoctor(Long id);
+
+    Doctor save(Doctor doctor);
+    Page<Doctor> getDoctor(String name, Pageable page);
 
     Optional<Doctor> findById(Long id);
 }

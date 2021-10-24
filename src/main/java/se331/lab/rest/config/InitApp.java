@@ -51,6 +51,40 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         doc3 = doctorRepository.save(Doctor.builder()
                 .name("DOC3").build());
 
+        User user1, user2, user3, user4;
+        user1 = userRepository.save(User.builder()
+                .username("user1")
+                .password("user")
+                .firstname("user1")
+                .lastname("user1")
+                .email("user1@gmail.com")
+                .enabled(true)
+                .build());
+        user2 = userRepository.save(User.builder()
+                .username("user2")
+                .password("user")
+                .firstname("user2")
+                .lastname("user2")
+                .email("user2@gmail.com")
+                .enabled(true)
+                .build());
+        user3 = userRepository.save(User.builder()
+                .username("user3")
+                .password("user")
+                .firstname("user3")
+                .lastname("user3")
+                .email("user3@gmail.com")
+                .enabled(true)
+                .build());
+        user4 = userRepository.save(User.builder()
+                .username("user4")
+                .password("user")
+                .firstname("user4")
+                .lastname("user4")
+                .email("user4@gmail.com")
+                .enabled(true)
+                .build());
+
         Admin admin1;
         admin1 = adminRepository.save(Admin.builder()
                 .name("ADMIN1").build());
@@ -113,25 +147,35 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         doc3.getOwnPatients().add(patient4);
 
         addUser();
-        patient1.setUser(user1);
-        user1.setPatient(patient1);
-        patient2.setUser(user2);
-        user2.setPatient(patient2);
-        doc3.setUser(user3);
-        user3.setDoctor(doc3);
-        patient4.setUser(user4);
-        user4.setPatient(patient4);
+        patient1.setUser(userPatient1);
+        userPatient1.setPatient(patient1);
+        patient2.setUser(userPatient2);
+        userPatient2.setPatient(patient2);
+        patient3.setUser(userPatient3);
+        userPatient3.setPatient(patient3);
+        patient4.setUser(userPatient4);
+        userPatient4.setPatient(patient4);
+
+        doc1.setUser(userDoc1);
+        userDoc1.setDoctor(doc1);
+
         admin1.setUser(admin);
         admin.setAdmin(admin1);
 
+        doc2.setUser(userDoc2);
+        userDoc2.setDoctor(doc2);
+
     }
 
-    User user1, user2, user3, user4, admin;
+    User userPatient1, userPatient2, userPatient3, userPatient4, admin, userDoc1, userDoc2;
     private void addUser() {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         Authority authUser = Authority.builder().name(AuthorityName.ROLE_USER).build();
         Authority authAdmin = Authority.builder().name(AuthorityName.ROLE_ADMIN).build();
-                user1 = User.builder()
+        Authority authDoctor = Authority.builder().name(AuthorityName.ROLE_DOCTOR).build();
+        Authority authPatient = Authority.builder().name(AuthorityName.ROLE_PATIENT).build();
+
+                userPatient1 = User.builder()
                         .username("patient1")
                         .password(encoder.encode("user"))
                         .firstname("Caelan")
@@ -141,7 +185,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                         .build();
 
-                user2 = User.builder()
+                userPatient2 = User.builder()
                         .username("patient2")
                         .password(encoder.encode("user"))
                         .firstname("Emillie")
@@ -151,7 +195,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                         .build();
 
-                user3 = User.builder()
+                userPatient3 = User.builder()
                         .username("patient3")
                         .password(encoder.encode("user"))
                         .firstname("Honor")
@@ -161,7 +205,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                         .build();
 
-                user4 = User.builder()
+                userPatient4 = User.builder()
                         .username("patient4")
                         .password(encoder.encode("user"))
                         .firstname("Jacob")
@@ -181,18 +225,43 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                         .build();
 
-                authorityRepository.save(authUser);
-                authorityRepository.save(authAdmin);
-                user1.getAuthorities().add(authUser);
-                user2.getAuthorities().add(authUser);
-                user3.getAuthorities().add(authUser);
-                user4.getAuthorities().add(authUser);
+                userDoc1 = User.builder()
+                        .username("doc1")
+                        .password(encoder.encode("doctor"))
+                        .firstname("DOC1")
+                        .lastname("DOC1")
+                        .email("doc1@doc.com")
+                        .enabled(true)
+                        .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                        .build();
+
+                userDoc2 = User.builder()
+                        .username("doc2")
+                        .password(encoder.encode("doctor"))
+                        .firstname("DOC2")
+                        .lastname("DOC2")
+                        .email("doc2@doc.com")
+                        .enabled(true)
+                        .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                        .build();
+
+//                authorityRepository.save(authUser);
+//                authorityRepository.save(authAdmin);
+//                authorityRepository.save(authDoctor);
+//                authorityRepository.save(authPatient);
+
+                userPatient1.getAuthorities().add(authPatient);
+                userPatient2.getAuthorities().add(authPatient);
+                userPatient3.getAuthorities().add(authPatient);
+                userPatient4.getAuthorities().add(authPatient);
                 admin.getAuthorities().add(authUser);
                 admin.getAuthorities().add(authAdmin);
-                userRepository.save(user1);
-                userRepository.save(user2);
-                userRepository.save(user3);
-                userRepository.save(user4);
+                userDoc1.getAuthorities().add(authDoctor);
+                userDoc2.getAuthorities().add(authDoctor);
+                userRepository.save(userPatient1);
+                userRepository.save(userPatient2);
+                userRepository.save(userPatient3);
+                userRepository.save(userPatient4);
                 userRepository.save(admin);
     }
 

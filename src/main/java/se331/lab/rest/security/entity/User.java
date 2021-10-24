@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 import se331.lab.rest.entity.Admin;
 import se331.lab.rest.entity.Doctor;
 import se331.lab.rest.entity.Patient;
@@ -61,7 +62,7 @@ public class User {
     private Date lastPasswordResetDate;
 
 	@Builder.Default
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     private List<Authority> authorities = new ArrayList<>();
 
     @OneToOne

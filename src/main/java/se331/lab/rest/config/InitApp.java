@@ -6,14 +6,8 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import se331.lab.rest.entity.Admin;
-import se331.lab.rest.entity.Patient;
-import se331.lab.rest.entity.Doctor;
-import se331.lab.rest.entity.Vaccine;
-import se331.lab.rest.repository.AdminRepository;
-import se331.lab.rest.repository.PatientRepository;
-import se331.lab.rest.repository.DoctorRepository;
-import se331.lab.rest.repository.VaccineRepository;
+import se331.lab.rest.entity.*;
+import se331.lab.rest.repository.*;
 import se331.lab.rest.security.entity.Authority;
 import se331.lab.rest.security.entity.AuthorityName;
 import se331.lab.rest.security.entity.User;
@@ -24,6 +18,7 @@ import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 @Component
 public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
@@ -39,6 +34,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     AdminRepository adminRepository;
     @Autowired
     VaccineRepository vaccineRepository;
+    @Autowired
+    CommentRepository commentRepository;
 
     @Override
     @Transactional
@@ -161,9 +158,17 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         doc2.setUser(userDoc2);
         userDoc2.setDoctor(doc2);
 
+        commentRepository.save(
+                Comment.builder()
+                        .comment_by(doc1)
+                        .comment_to(patient1)
+                        .content("pai doo tood")
+                        .build()
+        );
     }
 
     User userPatient1, userPatient2, userPatient3, userPatient4, admin, userDoc1, userDoc2;
+
     private void addUser() {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         Authority authUser = Authority.builder().name(AuthorityName.ROLE_USER).build();
@@ -171,88 +176,88 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         Authority authDoctor = Authority.builder().name(AuthorityName.ROLE_DOCTOR).build();
         Authority authPatient = Authority.builder().name(AuthorityName.ROLE_PATIENT).build();
 
-                userPatient1 = User.builder()
-                        .username("patient1")
-                        .password(encoder.encode("user"))
-                        .firstname("Caelan")
-                        .lastname("Cole")
-                        .enabled(true)
-                        .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
-                        .build();
+        userPatient1 = User.builder()
+                .username("patient1")
+                .password(encoder.encode("user"))
+                .firstname("Caelan")
+                .lastname("Cole")
+                .enabled(true)
+                .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                .build();
 
-                userPatient2 = User.builder()
-                        .username("patient2")
-                        .password(encoder.encode("user"))
-                        .firstname("Emillie")
-                        .lastname("Kinney")
-                        .enabled(true)
-                        .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
-                        .build();
+        userPatient2 = User.builder()
+                .username("patient2")
+                .password(encoder.encode("user"))
+                .firstname("Emillie")
+                .lastname("Kinney")
+                .enabled(true)
+                .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                .build();
 
-                userPatient3 = User.builder()
-                        .username("patient3")
-                        .password(encoder.encode("user"))
-                        .firstname("Honor")
-                        .lastname("Cervantes")
-                        .enabled(true)
-                        .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
-                        .build();
+        userPatient3 = User.builder()
+                .username("patient3")
+                .password(encoder.encode("user"))
+                .firstname("Honor")
+                .lastname("Cervantes")
+                .enabled(true)
+                .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                .build();
 
-                userPatient4 = User.builder()
-                        .username("patient4")
-                        .password(encoder.encode("user"))
-                        .firstname("Jacob")
-                        .lastname("Talley")
-                        .enabled(true)
-                        .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
-                        .build();
+        userPatient4 = User.builder()
+                .username("patient4")
+                .password(encoder.encode("user"))
+                .firstname("Jacob")
+                .lastname("Talley")
+                .enabled(true)
+                .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                .build();
 
-                admin = User.builder()
-                        .username("admin")
-                        .password(encoder.encode("admin"))
-                        .firstname("admin")
-                        .lastname("admin")
-                        .enabled(true)
-                        .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
-                        .build();
+        admin = User.builder()
+                .username("admin")
+                .password(encoder.encode("admin"))
+                .firstname("admin")
+                .lastname("admin")
+                .enabled(true)
+                .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                .build();
 
-                userDoc1 = User.builder()
-                        .username("doc1")
-                        .password(encoder.encode("doctor"))
-                        .firstname("DOC1")
-                        .lastname("DOC1")
-                        .enabled(true)
-                        .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
-                        .build();
+        userDoc1 = User.builder()
+                .username("doc1")
+                .password(encoder.encode("doctor"))
+                .firstname("DOC1")
+                .lastname("DOC1")
+                .enabled(true)
+                .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                .build();
 
-                userDoc2 = User.builder()
-                        .username("doc2")
-                        .password(encoder.encode("doctor"))
-                        .firstname("DOC2")
-                        .lastname("DOC2")
-                        .enabled(true)
-                        .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
-                        .build();
+        userDoc2 = User.builder()
+                .username("doc2")
+                .password(encoder.encode("doctor"))
+                .firstname("DOC2")
+                .lastname("DOC2")
+                .enabled(true)
+                .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                .build();
 
 //                authorityRepository.save(authUser);
 //                authorityRepository.save(authAdmin);
 //                authorityRepository.save(authDoctor);
 //                authorityRepository.save(authPatient);
 
-                userPatient1.getAuthorities().add(authPatient);
-                userPatient2.getAuthorities().add(authPatient);
-                userPatient3.getAuthorities().add(authPatient);
-                userPatient4.getAuthorities().add(authPatient);
-                admin.getAuthorities().add(authUser);
-                admin.getAuthorities().add(authAdmin);
-                userDoc1.getAuthorities().add(authDoctor);
-                userDoc2.getAuthorities().add(authDoctor);
-                userRepository.save(userPatient1);
-                userRepository.save(userPatient2);
-                userRepository.save(userPatient3);
-                userRepository.save(userPatient4);
-                userRepository.save(admin);
+        userPatient1.getAuthorities().add(authPatient);
+        userPatient2.getAuthorities().add(authPatient);
+        userPatient3.getAuthorities().add(authPatient);
+        userPatient4.getAuthorities().add(authPatient);
+        admin.getAuthorities().add(authUser);
+        admin.getAuthorities().add(authAdmin);
+        userDoc1.getAuthorities().add(authDoctor);
+        userDoc2.getAuthorities().add(authDoctor);
+        userRepository.save(userPatient1);
+        userRepository.save(userPatient2);
+        userRepository.save(userPatient3);
+        userRepository.save(userPatient4);
+        userRepository.save(admin);
+
+
     }
-
-
 }

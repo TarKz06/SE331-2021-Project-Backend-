@@ -15,7 +15,7 @@ public class DoctorOwnPatientsDTO {
     Long id;
     String firstname;
     String lastname;
-    Integer age;
+    String age;
     String gender;
     String hometown;
     Integer status;

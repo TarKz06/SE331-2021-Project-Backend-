@@ -39,7 +39,7 @@ public class DoctorServiceImpl implements DoctorService {
     @Override
     @Transactional
     public Doctor save(Doctor doctor) {
-        return null;
+        return doctorDao.save(doctor);
     }
 
     @Override

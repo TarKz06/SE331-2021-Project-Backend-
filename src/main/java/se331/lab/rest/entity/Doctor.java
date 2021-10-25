@@ -24,4 +24,6 @@ public class Doctor {
     @OneToOne(cascade=CascadeType.ALL)
     User user;
 
+    @OneToMany(mappedBy = "comment_by")
+    List<Comment> comment_to_patient;
 }

@@ -36,4 +36,7 @@ public class Patient {
 
     @OneToOne
     User user;
+
+    @OneToMany(mappedBy = "comment_to")
+    List<Comment> doctor_suggestion;
 }

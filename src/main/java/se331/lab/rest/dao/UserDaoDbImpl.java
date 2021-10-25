@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import se331.lab.rest.entity.Doctor;
 import se331.lab.rest.entity.Patient;
@@ -14,6 +16,10 @@ import se331.lab.rest.security.entity.Authority;
 import se331.lab.rest.security.entity.AuthorityName;
 import se331.lab.rest.security.entity.User;
 import se331.lab.rest.security.repository.UserRepository;
+
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 @Repository
 public class UserDaoDbImpl implements UserDao{
@@ -107,6 +113,7 @@ public class UserDaoDbImpl implements UserDao{
                 .age(tempAge)
                 .gender(tempGender)
                 .hometown(tempHometown)
+                .imageUrls(null)
                 .status(0)
                 .build());
 
@@ -118,7 +125,7 @@ public class UserDaoDbImpl implements UserDao{
                 .age(tempAge)
                 .gender(tempGender)
                 .hometown(tempHometown)
-                .imageUrl(tempImageUrl)
+                .imageUrl(null)
                 .enabled(true)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();

@@ -23,6 +23,5 @@ public class Vaccine {
     @Builder.Default
     List<Patient> patientVaccineHistory = new ArrayList<>();
 
-    @ElementCollection
-    List<String> imageUrls;
+    String imageUrls;
 }

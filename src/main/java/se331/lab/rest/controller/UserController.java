@@ -54,7 +54,7 @@ public class UserController {
             @PathVariable("id") Long id
     ){
         User user = userService.getUser(id);
-        Doctor output = userService.setRoleToDoctor(user) ;
+        Doctor output = userService.setRoleToDoctor(user);
         return ResponseEntity.ok(LabMapper.INSTANCE.getDoctorDto(output));
     }
 

@@ -19,5 +19,5 @@ public class DoctorOwnPatientsDTO {
     String gender;
     String hometown;
     Integer status;
-    List<String> imageUrls;
+    String imageUrls;
 }

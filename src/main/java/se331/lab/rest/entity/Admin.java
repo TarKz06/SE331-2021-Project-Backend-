@@ -16,7 +16,7 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
     Long id;
-    String name;
+    String firstname;
 
     @OneToOne
     User user;

@@ -43,6 +43,12 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     @Override
     @Transactional
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
+        addUser();
+
+        Admin admin1;
+        admin1 = adminRepository.save(Admin.builder()
+                .firstname("ADMIN1").build());
+
         Doctor doc1, doc2, doc3;
         doc1 = doctorRepository.save(Doctor.builder()
                 .firstname("DOC1").build());
@@ -81,10 +87,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .enabled(true)
                 .build());
 
-        Admin admin1;
-        admin1 = adminRepository.save(Admin.builder()
-                .name("ADMIN1").build());
-
         Vaccine vaccine1, vaccine2;
         vaccine1 = vaccineRepository.save(Vaccine.builder()
                 .vname("AstraZeneca")
@@ -99,7 +101,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         patient1 = patientRepository.save(Patient.builder()
                 .firstname("Caelan")
                 .lastname("Cole")
-                .age(32)
+                .age("32")
                 .gender("Male")
                 .hometown("Prejmer Romania")
                 .status(0)
@@ -111,7 +113,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         patient2 = patientRepository.save(Patient.builder()
                 .firstname("Emillie")
                 .lastname("Kinney")
-                .age(16)
+                .age("16")
                 .gender("Female")
                 .hometown("Piskivka Ukraine")
                 .status(1)
@@ -122,7 +124,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         patient3 = patientRepository.save(Patient.builder()
                 .firstname("Tomasz")
                 .lastname("Burnett")
-                .age(25)
+                .age("25")
                 .gender("Male")
                 .hometown("Nahuizalco El Salvador")
                 .status(1)
@@ -133,7 +135,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         patient4 = patientRepository.save(Patient.builder()
                 .firstname("Honor")
                 .lastname("Cervantes")
-                .age(25)
+                .age("25")
                 .gender("Female")
                 .hometown("Peace River Canada")
                 .status(2)
@@ -142,7 +144,15 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         vaccine2.getPatientVaccineHistory().add(patient4);
         doc3.getOwnPatients().add(patient4);
 
-        addUser();
+
+        admin1.setUser(admin);
+        admin.setAdmin(admin1);
+
+        doc1.setUser(userDoc1);
+        userDoc1.setDoctor(doc1);
+        doc2.setUser(userDoc2);
+        userDoc2.setDoctor(doc2);
+
         patient1.setUser(userPatient1);
         userPatient1.setPatient(patient1);
         patient2.setUser(userPatient2);
@@ -152,14 +162,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         patient4.setUser(userPatient4);
         userPatient4.setPatient(patient4);
 
-        doc1.setUser(userDoc1);
-        userDoc1.setDoctor(doc1);
 
-        admin1.setUser(admin);
-        admin.setAdmin(admin1);
 
-        doc2.setUser(userDoc2);
-        userDoc2.setDoctor(doc2);
 
     }
 
@@ -234,10 +238,10 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                         .build();
 
-//                authorityRepository.save(authUser);
-//                authorityRepository.save(authAdmin);
-//                authorityRepository.save(authDoctor);
-//                authorityRepository.save(authPatient);
+                authorityRepository.save(authUser);
+                authorityRepository.save(authAdmin);
+                authorityRepository.save(authDoctor);
+                authorityRepository.save(authPatient);
 
                 userPatient1.getAuthorities().add(authPatient);
                 userPatient2.getAuthorities().add(authPatient);

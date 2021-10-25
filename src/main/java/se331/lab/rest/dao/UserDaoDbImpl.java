@@ -68,11 +68,22 @@ public class UserDaoDbImpl implements UserDao{
         String tempLastName = user.getFirstname();
         String tempPassword = user.getPassword();
         String tempUserName = user.getUsername();
+        String tempAge = user.getAge();
+        String tempGender = user.getGender();
+        String tempHometown = user.getHometown();
+        String tempImageUrl = user.getImageUrl();
 
         Doctor doc1;
 
         doc1 = doctorRepository.save(Doctor.builder()
-                .firstname(tempFirstName).build());
+                .firstname(tempFirstName)
+                .lastname(tempLastName)
+                .age(tempAge)
+                .gender(tempGender)
+                .hometown(tempHometown)
+                .imageUrls(tempImageUrl)
+                .status(0)
+                .build());
 
         tempDoc = User.builder()
                 .username(tempUserName)
@@ -101,7 +112,7 @@ public class UserDaoDbImpl implements UserDao{
         String tempPassword = user.getPassword();
         String tempUserName = user.getUsername();
         String tempAge = user.getAge();
-        String tempGender = user.getHometown();
+        String tempGender = user.getGender();
         String tempHometown = user.getHometown();
         String tempImageUrl = user.getImageUrl();
 
@@ -113,7 +124,7 @@ public class UserDaoDbImpl implements UserDao{
                 .age(tempAge)
                 .gender(tempGender)
                 .hometown(tempHometown)
-                .imageUrls(null)
+                .imageUrls(tempImageUrl)
                 .status(0)
                 .build());
 
@@ -125,7 +136,7 @@ public class UserDaoDbImpl implements UserDao{
                 .age(tempAge)
                 .gender(tempGender)
                 .hometown(tempHometown)
-                .imageUrl(null)
+                .imageUrl(tempImageUrl)
                 .enabled(true)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
@@ -136,4 +147,6 @@ public class UserDaoDbImpl implements UserDao{
 
         return patientRepository.save(patient1);
     }
+
+
 }

@@ -14,5 +14,11 @@ import java.util.List;
 public class DoctorDTO {
     Long id;
     String firstname;
+    String lastname;
+    String age;
+    String gender;
+    String hometown;
+    Integer status;
+    String imageUrls;
     List<DoctorOwnPatientsDTO> ownPatients;
 }

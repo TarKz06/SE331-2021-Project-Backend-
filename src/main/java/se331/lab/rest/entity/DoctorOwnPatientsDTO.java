@@ -13,8 +13,8 @@ import java.util.List;
 @AllArgsConstructor
 public class DoctorOwnPatientsDTO {
     Long id;
-    String name;
-    String surname;
+    String firstname;
+    String lastname;
     Integer age;
     String gender;
     String hometown;

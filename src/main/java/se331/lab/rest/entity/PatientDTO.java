@@ -17,8 +17,8 @@ import java.util.List;
 @AllArgsConstructor
 public class PatientDTO {
     Long id;
-    String name;
-    String surname;
+    String firstname;
+    String lastname;
     Integer age;
     String gender;
     String hometown;

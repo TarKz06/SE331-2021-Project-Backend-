@@ -20,11 +20,15 @@ public final class JwtUserFactory {
                 user.getUsername(),
                 user.getFirstname(),
                 user.getLastname(),
-                user.getEmail(),
+                user.getAge(),
+                user.getGender(),
+                user.getHometown(),
+                user.getImageUrl(),
                 user.getPassword(),
                 mapToGrantedAuthorities(user.getAuthorities()),
-                user.getEnabled(),
-                user.getLastPasswordResetDate()
+                user.getLastPasswordResetDate(),
+                user.getEnabled()
+
         );
     }
 

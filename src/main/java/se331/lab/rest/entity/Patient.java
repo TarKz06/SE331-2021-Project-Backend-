@@ -18,8 +18,8 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
     Long id;
-    String name;
-    String surname;
+    String firstname;
+    String lastname;
     Integer age;
     String gender;
     String hometown;

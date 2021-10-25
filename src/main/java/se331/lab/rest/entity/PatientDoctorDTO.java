@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PatientDoctorDTO {
     Long id;
-    String name;
+    String firstname;
 }

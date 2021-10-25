@@ -48,9 +48,17 @@ public class User {
     @NotNull
     private String lastname;
 
-    @Column(name = "EMAIL", length = 50)
+    @Column(name = "AGE", length = 10)
     @NotNull
-    private String email;
+    private String age;
+
+    @Column(name = "GENDER", length = 10)
+    @NotNull
+    private String gender;
+
+    @Column(name = "HOMETOWN", length = 50)
+    @NotNull
+    private String hometown;
 
     @Column(name = "ENABLED")
     @NotNull
@@ -60,6 +68,10 @@ public class User {
     @Temporal(TemporalType.TIMESTAMP)
     @NotNull
     private Date lastPasswordResetDate;
+
+    @Column(name = "IMAGE_URL")
+    @NotNull
+    private String imageUrl;
 
 	@Builder.Default
     @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)

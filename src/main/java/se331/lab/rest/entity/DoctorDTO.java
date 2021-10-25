@@ -13,6 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 public class DoctorDTO {
     Long id;
-    String name;
+    String firstname;
     List<DoctorOwnPatientsDTO> ownPatients;
 }

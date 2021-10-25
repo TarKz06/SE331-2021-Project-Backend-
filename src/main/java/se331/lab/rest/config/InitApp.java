@@ -45,11 +45,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
         Doctor doc1, doc2, doc3;
         doc1 = doctorRepository.save(Doctor.builder()
-                .name("DOC1").build());
+                .firstname("DOC1").build());
         doc2 = doctorRepository.save(Doctor.builder()
-                .name("DOC2").build());
+                .firstname("DOC2").build());
         doc3 = doctorRepository.save(Doctor.builder()
-                .name("DOC3").build());
+                .firstname("DOC3").build());
 
         User user1, user2, user3, user4;
         user1 = userRepository.save(User.builder()
@@ -57,7 +57,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .password("user")
                 .firstname("user1")
                 .lastname("user1")
-                .email("user1@gmail.com")
                 .enabled(true)
                 .build());
         user2 = userRepository.save(User.builder()
@@ -65,7 +64,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .password("user")
                 .firstname("user2")
                 .lastname("user2")
-                .email("user2@gmail.com")
                 .enabled(true)
                 .build());
         user3 = userRepository.save(User.builder()
@@ -73,7 +71,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .password("user")
                 .firstname("user3")
                 .lastname("user3")
-                .email("user3@gmail.com")
                 .enabled(true)
                 .build());
         user4 = userRepository.save(User.builder()
@@ -81,7 +78,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .password("user")
                 .firstname("user4")
                 .lastname("user4")
-                .email("user4@gmail.com")
                 .enabled(true)
                 .build());
 
@@ -101,8 +97,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
         Patient patient1, patient2, patient3, patient4;
         patient1 = patientRepository.save(Patient.builder()
-                .name("Caelan")
-                .surname("Cole")
+                .firstname("Caelan")
+                .lastname("Cole")
                 .age(32)
                 .gender("Male")
                 .hometown("Prejmer Romania")
@@ -113,8 +109,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         vaccine2.getPatientVaccineHistory().add(patient1);
         doc1.getOwnPatients().add(patient1);
         patient2 = patientRepository.save(Patient.builder()
-                .name("Emillie")
-                .surname("Kinney")
+                .firstname("Emillie")
+                .lastname("Kinney")
                 .age(16)
                 .gender("Female")
                 .hometown("Piskivka Ukraine")
@@ -124,8 +120,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         doc1.getOwnPatients().add(patient2);
         vaccine1.getPatientVaccineHistory().add(patient2);
         patient3 = patientRepository.save(Patient.builder()
-                .name("Tomasz")
-                .surname("Burnett")
+                .firstname("Tomasz")
+                .lastname("Burnett")
                 .age(25)
                 .gender("Male")
                 .hometown("Nahuizalco El Salvador")
@@ -135,8 +131,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         vaccine1.getPatientVaccineHistory().add(patient3);
         doc2.getOwnPatients().add(patient3);
         patient4 = patientRepository.save(Patient.builder()
-                .name("Honor")
-                .surname("Cervantes")
+                .firstname("Honor")
+                .lastname("Cervantes")
                 .age(25)
                 .gender("Female")
                 .hometown("Peace River Canada")
@@ -180,7 +176,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         .password(encoder.encode("user"))
                         .firstname("Caelan")
                         .lastname("Cole")
-                        .email("enabled@user.com")
                         .enabled(true)
                         .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                         .build();
@@ -190,7 +185,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         .password(encoder.encode("user"))
                         .firstname("Emillie")
                         .lastname("Kinney")
-                        .email("enabled@user.com")
                         .enabled(true)
                         .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                         .build();
@@ -200,7 +194,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         .password(encoder.encode("user"))
                         .firstname("Honor")
                         .lastname("Cervantes")
-                        .email("enabled@user.com")
                         .enabled(true)
                         .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                         .build();
@@ -210,7 +203,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         .password(encoder.encode("user"))
                         .firstname("Jacob")
                         .lastname("Talley")
-                        .email("enabled@user.com")
                         .enabled(true)
                         .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                         .build();
@@ -220,7 +212,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         .password(encoder.encode("admin"))
                         .firstname("admin")
                         .lastname("admin")
-                        .email("admin@admin.com")
                         .enabled(true)
                         .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                         .build();
@@ -230,7 +221,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         .password(encoder.encode("doctor"))
                         .firstname("DOC1")
                         .lastname("DOC1")
-                        .email("doc1@doc.com")
                         .enabled(true)
                         .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                         .build();
@@ -240,7 +230,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         .password(encoder.encode("doctor"))
                         .firstname("DOC2")
                         .lastname("DOC2")
-                        .email("doc2@doc.com")
                         .enabled(true)
                         .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                         .build();

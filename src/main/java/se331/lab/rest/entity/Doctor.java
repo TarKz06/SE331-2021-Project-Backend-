@@ -17,7 +17,7 @@ public class Doctor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
     Long id;
-    String name;
+    String firstname;
     @OneToMany(mappedBy = "doctor")
     @Builder.Default
     List<Patient> ownPatients = new ArrayList<>();

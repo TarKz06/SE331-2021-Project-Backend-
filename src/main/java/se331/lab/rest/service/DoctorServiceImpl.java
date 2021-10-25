@@ -39,10 +39,6 @@ public class DoctorServiceImpl implements DoctorService {
     @Override
     @Transactional
     public Doctor save(Doctor doctor) {
-//        Doctor doctor = doctorDao.findById(patient.getDoctor().getId()).orElse(null);
-//        patient.setDoctor(doctor);
-//        doctor.getOwnPatients().add(patient);
-//        return patientDao.save(patient);
         return null;
     }
 

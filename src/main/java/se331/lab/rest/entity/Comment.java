@@ -23,5 +23,4 @@ public class Comment {
     Patient comment_to;
 
     String content;
-    Date comment_when;
 }

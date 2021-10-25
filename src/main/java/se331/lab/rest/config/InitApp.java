@@ -160,9 +160,23 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
         commentRepository.save(
                 Comment.builder()
+                        .comment_by(doc2)
+                        .comment_to(patient4)
+                        .content("mai pai pai")
+                        .build()
+        );
+        commentRepository.save(
+                Comment.builder()
                         .comment_by(doc1)
                         .comment_to(patient1)
-                        .content("pai doo tood")
+                        .content("pai mai pai")
+                        .build()
+        );
+        commentRepository.save(
+                Comment.builder()
+                        .comment_by(doc2)
+                        .comment_to(patient3)
+                        .content("pai pai mai")
                         .build()
         );
     }

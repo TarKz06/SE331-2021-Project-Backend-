@@ -13,4 +13,7 @@ public interface UserService {
 
     User save(User user);
     Page<User> getUsers(String title, Pageable pageable);
+
+    Doctor setRoleToDoctor(User user);
+    Patient setRoleToPatient(User user);
 }

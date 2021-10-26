@@ -29,8 +29,9 @@ public class Patient {
     @ManyToOne
     Doctor doctor;
 
-    @ManyToMany(mappedBy = "patientVaccineHistory")
-    List<Vaccine> vaccines;
+    @OneToMany(mappedBy = "patientVaccineHistory")
+    @Builder.Default
+    List<Vaccine> vaccines = new ArrayList<>();
 
     String imageUrls;
 

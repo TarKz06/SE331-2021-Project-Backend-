@@ -19,9 +19,8 @@ public class Vaccine {
     String vname;
     String vtype;
 
-    @ManyToMany
-    @Builder.Default
-    List<Patient> patientVaccineHistory = new ArrayList<>();
+    @ManyToOne
+    Patient patientVaccineHistory;
 
     String imageUrls;
 }

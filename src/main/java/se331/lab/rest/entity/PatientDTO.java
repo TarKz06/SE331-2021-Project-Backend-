@@ -25,6 +25,10 @@ public class PatientDTO {
     String imageUrl;
     Integer status;
     PatientDoctorDTO doctor;
+
+    List<VaccinePatientDTO> vaccine;
+
     List<String> authorities;
+
 
 }

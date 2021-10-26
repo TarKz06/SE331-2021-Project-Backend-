@@ -24,6 +24,6 @@ public class PatientDTO {
     String hometown;
     Integer status;
     PatientDoctorDTO doctor;
-
+    List<String> authorities;
 
 }

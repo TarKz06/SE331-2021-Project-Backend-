@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 @Mapper(imports = Collectors.class)
 public interface LabMapper {
     LabMapper INSTANCE = Mappers.getMapper(LabMapper.class);
+    @Mapping(target = "authorities", expression = "java(patient.getUser().getAuthorities().stream().map(auth -> auth.getName().name()).collect(Collectors.toList()))")
     PatientDTO getPatientDto(Patient patient);
     List<PatientDTO> getPatientDto(List<Patient> patients);
 
@@ -21,6 +22,7 @@ public interface LabMapper {
     DoctorDTO getDoctorDto(Doctor doctor);
     List<DoctorDTO> getDoctorDto(List<Doctor> doctors);
 
+    @Mapping(target = "authorities", expression = "java(admin.getUser().getAuthorities().stream().map(auth -> auth.getName().name()).collect(Collectors.toList()))")
     AdminDTO getAdminDto(Admin admin);
     List<AdminDTO> getAdminDto(List<Admin> admin);
 

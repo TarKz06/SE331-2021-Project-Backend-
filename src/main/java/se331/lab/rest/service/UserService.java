@@ -2,6 +2,7 @@ package se331.lab.rest.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import se331.lab.rest.entity.Doctor;
 import se331.lab.rest.entity.Patient;
 import se331.lab.rest.security.entity.User;
 
@@ -13,4 +14,7 @@ public interface UserService {
 
     User save(User user);
     Page<User> getUsers(String title, Pageable pageable);
+
+    Doctor setRoleToDoctor(User user);
+    Patient setRoleToPatient(User user);
 }

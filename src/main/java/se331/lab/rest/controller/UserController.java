@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import se331.lab.rest.entity.Doctor;
+import se331.lab.rest.entity.Patient;
 import se331.lab.rest.security.entity.User;
 import se331.lab.rest.service.UserService;
 import se331.lab.rest.util.LabMapper;
@@ -47,9 +49,21 @@ public class UserController {
         }
     }
 
-    @PostMapping("/users")
-    public ResponseEntity<?> addUser(@RequestBody User user) {
-        User output = userService.save(user);
-        return ResponseEntity.ok(LabMapper.INSTANCE.getUserDTO(output));
+    @PostMapping("set-role/{id}/doctors")
+    public ResponseEntity<?> SetRoleToDoctor(
+            @PathVariable("id") Long id
+    ){
+        User user = userService.getUser(id);
+        Doctor output = userService.setRoleToDoctor(user);
+        return ResponseEntity.ok(LabMapper.INSTANCE.getDoctorDto(output));
+    }
+
+    @PostMapping("set-role/{id}/plists")
+    public ResponseEntity<?> SetRoleToPatient(
+            @PathVariable("id") Long id
+    ){
+        User user = userService.getUser(id);
+        Patient output = userService.setRoleToPatient(user) ;
+        return ResponseEntity.ok(LabMapper.INSTANCE.getPatientDto(output));
     }
 }

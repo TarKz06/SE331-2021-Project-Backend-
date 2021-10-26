@@ -2,6 +2,8 @@ package se331.lab.rest.dao;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import se331.lab.rest.entity.Doctor;
+import se331.lab.rest.entity.Patient;
 import se331.lab.rest.security.entity.User;
 
 public interface UserDao {
@@ -12,4 +14,7 @@ public interface UserDao {
 
     User save(User user);
     Page<User> getUser(String name, Pageable page);
+
+    Doctor setRoleToDoctor(User user);
+    Patient setRoleToPatient(User user);
 }

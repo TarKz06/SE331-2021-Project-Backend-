@@ -31,9 +31,8 @@ public class Patient {
     @ManyToMany(mappedBy = "patientVaccineHistory")
     List<Vaccine> vaccines;
 
-    @ElementCollection
-    List<String> imageUrls;
+    String imageUrls;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     User user;
 }

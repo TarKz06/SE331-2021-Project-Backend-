@@ -45,4 +45,11 @@ public class UserServiceImpl implements UserService {
     public Page<User> getUsers(String title, Pageable pageable) {
         return userDao.getUser(title,pageable);
     }
+
+    public Doctor setRoleToDoctor(User user){ return userDao.setRoleToDoctor(user); }
+
+    @Override
+    public Patient setRoleToPatient(User user) {
+        return userDao.setRoleToPatient(user);
+    }
 }

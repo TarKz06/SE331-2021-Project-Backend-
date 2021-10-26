@@ -19,5 +19,4 @@ public class DoctorOwnPatientsDTO {
     String gender;
     String hometown;
     Integer status;
-    String imageUrls;
 }

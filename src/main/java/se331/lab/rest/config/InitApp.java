@@ -127,6 +127,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .age("32")
                 .gender("Male")
                 .hometown("Prejmer Romania")
+                .imageUrl("https://data.whicdn.com/images/346071085/original.gif")
                 .status(0)
                 .build();
         patient1.getVaccines().add(vaccine1);
@@ -138,6 +139,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .age("16")
                 .gender("Female")
                 .hometown("Piskivka Ukraine")
+                .imageUrl("https://data.whicdn.com/images/346071093/original.gif")
                 .status(1)
                 .build();
         patient2.setDoctor(doc1);
@@ -149,6 +151,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .age("25")
                 .gender("Male")
                 .hometown("Nahuizalco El Salvador")
+                .imageUrl("https://i.gifer.com/Lynk.gif")
                 .status(1)
                 .build();
         patient3.setDoctor(doc2);
@@ -160,6 +163,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .age("25")
                 .gender("Female")
                 .hometown("Peace River Canada")
+                .imageUrl("https://gifimage.net/wp-content/uploads/2017/09/anime-gif-300x300-200kb-8.gif")
                 .status(2)
                 .build();
         patient4.setDoctor(doc2);
@@ -205,6 +209,10 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         .password(encoder.encode("patient"))
                         .firstname("Caelan")
                         .lastname("Cole")
+                        .age("32")
+                        .gender("Male")
+                        .hometown("Prejmer Romania")
+                        .imageUrl("https://data.whicdn.com/images/346071085/original.gif")
                         .enabled(true)
                         .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                         .build();
@@ -214,6 +222,10 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         .password(encoder.encode("patient"))
                         .firstname("Emillie")
                         .lastname("Kinney")
+                        .age("16")
+                        .gender("Female")
+                        .hometown("Piskivka Ukraine")
+                        .imageUrl("https://data.whicdn.com/images/346071093/original.gif")
                         .enabled(true)
                         .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                         .build();
@@ -236,7 +248,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         .password(encoder.encode("patient"))
                         .firstname("Honor")
                         .lastname("Cervantes")
-                        .age("50")
+                        .age("25")
                         .gender("Female")
                         .hometown("Peace River Canada")
                         .imageUrl("https://gifimage.net/wp-content/uploads/2017/09/anime-gif-300x300-200kb-8.gif")

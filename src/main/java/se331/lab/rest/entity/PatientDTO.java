@@ -22,9 +22,13 @@ public class PatientDTO {
     String age;
     String gender;
     String hometown;
+    String imageUrl;
     Integer status;
     PatientDoctorDTO doctor;
+
     List<VaccinePatientDTO> vaccine;
+
+    List<String> authorities;
 
 
 }

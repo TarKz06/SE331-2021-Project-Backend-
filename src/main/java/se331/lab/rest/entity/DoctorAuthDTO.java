@@ -15,5 +15,10 @@ import java.util.List;
 public class DoctorAuthDTO {
         Long id;
         String firstname;
+        String lastname;
+        String age;
+        String gender;
+        String hometown;
+        Integer status;
         List<String> authorities;
 }

@@ -23,6 +23,7 @@ public class Patient {
     String age;
     String gender;
     String hometown;
+    String imageUrl;
     Integer status;
 
     @ManyToOne

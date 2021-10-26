@@ -71,7 +71,6 @@ public class UserDaoDbImpl implements UserDao{
         String tempAge = user.getAge();
         String tempGender = user.getGender();
         String tempHometown = user.getHometown();
-        String tempImageUrl = user.getImageUrl();
 
         Doctor doc1;
 
@@ -81,7 +80,6 @@ public class UserDaoDbImpl implements UserDao{
                 .age(tempAge)
                 .gender(tempGender)
                 .hometown(tempHometown)
-                .imageUrls(tempImageUrl)
                 .status(0)
                 .build());
 
@@ -124,7 +122,7 @@ public class UserDaoDbImpl implements UserDao{
                 .age(tempAge)
                 .gender(tempGender)
                 .hometown(tempHometown)
-                .imageUrls(tempImageUrl)
+                .imageUrl(tempImageUrl)
                 .status(0)
                 .build());
 

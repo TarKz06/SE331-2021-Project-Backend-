@@ -19,7 +19,6 @@ public class DoctorDTO {
     String gender;
     String hometown;
     Integer status;
-    String imageUrls;
     List<DoctorOwnPatientsDTO> ownPatients;
     List<String> authorities;
 }

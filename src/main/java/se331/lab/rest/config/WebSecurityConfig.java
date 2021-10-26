@@ -66,14 +66,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/auth/**",  "/refresh").permitAll()
 
                 //add more 5.1 plist without login
-                .antMatchers(HttpMethod.GET,"/plists").hasAnyRole("PATIENT, ADMIN")
-                .antMatchers(HttpMethod.GET,"/plists/**").hasAnyRole("PATIENT, ADMIN")
+                .antMatchers(HttpMethod.GET,"/plists").hasAnyRole("PATIENT", "ADMIN")
+                .antMatchers(HttpMethod.GET,"/plists/**").hasAnyRole("PATIENT", "ADMIN")
                 //add more 5.2 doctor
-                .antMatchers(HttpMethod.GET,"/doctors").hasAnyRole("DOCTOR, ADMIN")
-                .antMatchers(HttpMethod.GET,"/doctors/**").hasAnyRole("DOCTOR, ADMIN")
+                .antMatchers(HttpMethod.GET,"/doctors").hasAnyRole("DOCTOR", "ADMIN")
+                .antMatchers(HttpMethod.GET,"/doctors/**").hasAnyRole("DOCTOR", "ADMIN")
                 .antMatchers(HttpMethod.GET,"/admins").hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET,"/users").hasAnyRole("USER, ADMIN")
-                .antMatchers(HttpMethod.GET,"/users/**").hasAnyRole("USER, ADMIN")
+                .antMatchers(HttpMethod.GET,"/users").hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.GET,"/users/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.POST,"/set-role/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET,"/patients-in-care/**").permitAll()
+                .antMatchers(HttpMethod.GET,"/vaccine").permitAll()
 
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .anyRequest().authenticated();

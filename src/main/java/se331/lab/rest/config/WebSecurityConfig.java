@@ -66,13 +66,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/auth/**",  "/refresh").permitAll()
 
                 //add more 5.1 plist without login
-                .antMatchers(HttpMethod.GET,"/plists").hasAnyRole("PATIENT", "ADMIN")
-                .antMatchers(HttpMethod.GET,"/plists/**").hasAnyRole("PATIENT", "ADMIN")
+                .antMatchers(HttpMethod.GET,"/plists").hasAnyRole("PATIENT", "ADMIN","DOCTOR")
+                .antMatchers(HttpMethod.GET,"/plists/**").hasAnyRole("PATIENT", "ADMIN","DOCTOR")
                 //add more 5.2 doctor
-                .antMatchers(HttpMethod.GET,"/doctors").hasAnyRole("DOCTOR", "ADMIN")
-                .antMatchers(HttpMethod.GET,"/doctors/**").hasAnyRole("DOCTOR", "ADMIN")
+                .antMatchers(HttpMethod.GET,"/doctors").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET,"/doctors/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET,"/admins").hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET,"/users").hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.GET,"/users").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET,"/users/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.POST,"/set-role/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET,"/patients-in-care/**").permitAll()

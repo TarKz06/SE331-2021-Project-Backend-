@@ -21,4 +21,5 @@ public class DoctorDTO {
     Integer status;
     String imageUrls;
     List<DoctorOwnPatientsDTO> ownPatients;
+    List<String> authorities;
 }

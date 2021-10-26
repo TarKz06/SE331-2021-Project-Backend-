@@ -120,53 +120,56 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         Patient patient1, patient2, patient3, patient4;
-        patient1 = patientRepository.save(Patient.builder()
+
+        patient1 = Patient.builder()
                 .firstname("Caelan")
                 .lastname("Cole")
                 .age("32")
                 .gender("Male")
                 .hometown("Prejmer Romania")
                 .status(0)
-                .build());
+                .build();
+        patient1.getVaccines().add(vaccine1);
         patient1.setDoctor(doc1);
-        vaccine1.getPatientVaccineHistory().add(patient1);
-        vaccine2.getPatientVaccineHistory().add(patient1);
         doc1.getOwnPatients().add(patient1);
-        patient2 = patientRepository.save(Patient.builder()
+        patient2 = Patient.builder()
                 .firstname("Emillie")
                 .lastname("Kinney")
                 .age("16")
                 .gender("Female")
                 .hometown("Piskivka Ukraine")
                 .status(1)
-                .build());
+                .build();
         patient2.setDoctor(doc1);
         doc1.getOwnPatients().add(patient2);
-        vaccine1.getPatientVaccineHistory().add(patient2);
-        patient3 = patientRepository.save(Patient.builder()
+        patient2.getVaccines().add(vaccine1);
+        patient3 = Patient.builder()
                 .firstname("Tomasz")
                 .lastname("Burnett")
                 .age("25")
                 .gender("Male")
                 .hometown("Nahuizalco El Salvador")
                 .status(1)
-                .build());
+                .build();
         patient3.setDoctor(doc2);
-        vaccine1.getPatientVaccineHistory().add(patient3);
+        patient1.getVaccines().add(vaccine1);
         doc2.getOwnPatients().add(patient3);
-        patient4 = patientRepository.save(Patient.builder()
+        patient4 = Patient.builder()
                 .firstname("Honor")
                 .lastname("Cervantes")
                 .age("25")
                 .gender("Female")
                 .hometown("Peace River Canada")
                 .status(2)
-                .build());
+                .build();
         patient4.setDoctor(doc2);
-        vaccine2.getPatientVaccineHistory().add(patient4);
+        patient1.getVaccines().add(vaccine2);
         doc2.getOwnPatients().add(patient4);
 
-
+        patientRepository.save(patient1);
+        patientRepository.save(patient2);
+        patientRepository.save(patient3);
+        patientRepository.save(patient4);
         admin1.setUser(admin);
         admin.setAdmin(admin1);
 

@@ -20,6 +20,5 @@ public class DoctorAuthDTO {
         String gender;
         String hometown;
         Integer status;
-        String imageUrls;
         List<String> authorities;
 }

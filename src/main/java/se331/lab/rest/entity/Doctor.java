@@ -23,7 +23,6 @@ public class Doctor {
     String gender;
     String hometown;
     Integer status;
-    String imageUrls;
     @OneToMany(mappedBy = "doctor")
     @Builder.Default
     List<Patient> ownPatients = new ArrayList<>();

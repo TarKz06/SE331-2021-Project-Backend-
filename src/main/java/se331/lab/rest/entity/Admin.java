@@ -17,6 +17,7 @@ public class Admin {
     @EqualsAndHashCode.Exclude
     Long id;
     String firstname;
+    String lastname;
 
     @OneToOne
     User user;

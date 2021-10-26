@@ -3,6 +3,7 @@ package se331.lab.rest.dao;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import se331.lab.rest.entity.Doctor;
+import se331.lab.rest.entity.Patient;
 
 import java.util.Optional;
 
@@ -15,4 +16,6 @@ public interface DoctorDao {
     Page<Doctor> getDoctor(String name, Pageable page);
 
     Optional<Doctor> findById(Long id);
+    Patient giveComment(String content, Doctor comment_by, Patient comment_to);
+
 }

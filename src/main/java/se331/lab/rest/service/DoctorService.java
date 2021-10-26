@@ -3,6 +3,7 @@ package se331.lab.rest.service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import se331.lab.rest.entity.Doctor;
+import se331.lab.rest.entity.Patient;
 
 import java.util.List;
 
@@ -13,4 +14,6 @@ public interface DoctorService {
 
     Doctor save(Doctor doctor);
     Page<Doctor> getDoctors(String title, Pageable pageable);
+    Patient giveComment(String content, Doctor comment_by, Patient comment_to);
+
 }

@@ -47,4 +47,9 @@ public class DoctorServiceImpl implements DoctorService {
         return doctorDao.getDoctor(title,pageable);
     }
 
+    @Override
+    public Patient giveComment(String content, Doctor comment_by, Patient comment_to) {
+        return doctorDao.giveComment(content,comment_by,comment_to);
+    }
+
 }

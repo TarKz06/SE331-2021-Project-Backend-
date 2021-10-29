@@ -3,6 +3,7 @@ package se331.lab.rest.repository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import se331.lab.rest.entity.Doctor;
 import se331.lab.rest.entity.Patient;
 
 import java.util.List;
@@ -15,5 +16,5 @@ public interface PatientRepository extends JpaRepository<Patient,Long> {
 //    Page<Patient> findByTitleContainingAndDescriptionContaining(String title, String description, Pageable pageRequest);
 //    Page<Patient> findByTitleIgnoreCaseContainingOrDescriptionIgnoreCaseContainingOrDoctor_NameIgnoreCaseContaining(String title, String description, String organizerName, Pageable pageRequest);
 //
-
+    Page<Patient> findByDoctor(Doctor doctor, Pageable pageable);
 }

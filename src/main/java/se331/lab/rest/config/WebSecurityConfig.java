@@ -66,8 +66,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/auth/**",  "/refresh").permitAll()
 
                 //add more 5.1 plist without login
-                .antMatchers(HttpMethod.GET,"/plists").hasAnyRole("PATIENT", "ADMIN","DOCTOR")
-                .antMatchers(HttpMethod.GET,"/plists/**").hasAnyRole("PATIENT", "ADMIN","DOCTOR")
+                .antMatchers(HttpMethod.GET,"/plists").hasAnyRole("PATIENT", "ADMIN")
+                .antMatchers(HttpMethod.GET,"/plists/**").hasAnyRole("PATIENT","ADMIN","DOCTOR")
                 //add more 5.2 doctor
                 .antMatchers(HttpMethod.GET,"/doctors").hasAnyRole("ADMIN","DOCTOR")
                 .antMatchers(HttpMethod.GET,"/doctors/**").hasAnyRole("ADMIN","DOCTOR")
@@ -75,7 +75,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET,"/users").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET,"/users/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.POST,"/set-role/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET,"/patients-in-care/**").permitAll()
+                .antMatchers(HttpMethod.GET,"/patients-in-care/**").hasAnyRole("ADMIN","DOCTOR")
                 .antMatchers(HttpMethod.GET,"/vaccine").permitAll()
                 .antMatchers(HttpMethod.GET,"/doctors-post-comment").hasAnyRole("ADMIN","DOCTOR")
 

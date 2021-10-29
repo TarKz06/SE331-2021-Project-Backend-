@@ -12,6 +12,7 @@ public interface DoctorDao {
     Page<Doctor> getDoctors(Integer pageSize, Integer page);
     Doctor getDoctor(Long id);
 
+    Page<Patient> getPatientInCares(Doctor doctor, Integer pageSize, Integer page);
     Doctor save(Doctor doctor);
     Page<Doctor> getDoctor(String name, Pageable page);
     Patient doctorPostComment(String message, Patient patientComment, Doctor doctorComment);

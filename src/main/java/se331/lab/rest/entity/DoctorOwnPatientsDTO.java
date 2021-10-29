@@ -18,5 +18,7 @@ public class DoctorOwnPatientsDTO {
     String age;
     String gender;
     String hometown;
+    String imageUrl;
     Integer status;
+    List<DoctorOwnPatientsDTO> ownPatients;
 }

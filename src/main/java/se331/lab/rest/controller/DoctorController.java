@@ -44,6 +44,18 @@ public class DoctorController {
         return new ResponseEntity<>(LabMapper.INSTANCE.getDoctorDto(pageOutput.getContent()), responseHeader, HttpStatus.OK);
 
     }
+//"/patients-in-care/**"
+    @GetMapping("/patients-in-care/{id}")
+    public ResponseEntity<?> getPatientInCare(
+            @PathVariable("id") Long id
+    ){
+        Doctor output = doctorService.getDoctor(id);
+        if(output != null){
+            return ResponseEntity.ok(LabMapper.INSTANCE.getPatientInCare(output));
+        }else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The given id is not found");
+        }
+    }
 
     @GetMapping("doctors/{id}")
     public ResponseEntity<?> getDoctor(@PathVariable("id") Long id) {

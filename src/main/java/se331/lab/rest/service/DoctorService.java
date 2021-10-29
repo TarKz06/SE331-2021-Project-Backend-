@@ -13,6 +13,9 @@ public interface DoctorService {
     Doctor getDoctor(Long id);
 
     Doctor save(Doctor doctor);
+
+    Page<Patient> getPatientInCares(Doctor doctor, Integer pageSize, Integer page);
+
     Page<Doctor> getDoctors(String title, Pageable pageable);
     Patient doctorPostComment(String message, Patient patientComment, Doctor doctorComment);
 }

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AuthorityDTO {
-    String firstname;
+public class VaccinePatientDTO {
+    String vname;
+    String vtype;
 }
-

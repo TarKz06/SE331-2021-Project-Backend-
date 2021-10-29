@@ -5,19 +5,20 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO {
+public class DoctorDTO {
     Long id;
-    String username;
-    String password;
     String firstname;
     String lastname;
     String age;
     String gender;
     String hometown;
+    Integer status;
+    List<DoctorOwnPatientsDTO> ownPatients;
+    List<String> authorities;
 }

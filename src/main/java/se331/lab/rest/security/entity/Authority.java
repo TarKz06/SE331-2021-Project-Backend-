@@ -23,7 +23,7 @@ public class Authority {
     private Long id;
     @Enumerated(EnumType.STRING)
     private AuthorityName name;
-    @ManyToMany(mappedBy = "authorities", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "authorities", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private List<User> users;
 
     public Authority() {

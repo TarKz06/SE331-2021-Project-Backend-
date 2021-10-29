@@ -7,7 +7,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import se331.lab.rest.entity.Organizer;
+import org.springframework.transaction.annotation.Transactional;
+import se331.lab.rest.entity.Admin;
+import se331.lab.rest.entity.Doctor;
+import se331.lab.rest.entity.Patient;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -45,9 +48,17 @@ public class User {
     @NotNull
     private String lastname;
 
-    @Column(name = "EMAIL", length = 50)
+    @Column(name = "AGE", length = 10)
     @NotNull
-    private String email;
+    private String age;
+
+    @Column(name = "GENDER", length = 10)
+    @NotNull
+    private String gender;
+
+    @Column(name = "HOMETOWN", length = 50)
+    @NotNull
+    private String hometown;
 
     @Column(name = "ENABLED")
     @NotNull
@@ -58,11 +69,21 @@ public class User {
     @NotNull
     private Date lastPasswordResetDate;
 
+    @Column(name = "IMAGE_URL")
+    @NotNull
+    private String imageUrl;
+
 	@Builder.Default
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     private List<Authority> authorities = new ArrayList<>();
 
     @OneToOne
-    Organizer organizer;
+    Doctor doctor;
+
+    @OneToOne
+    Admin admin;
+
+    @OneToOne
+    Patient patient;
 
 }

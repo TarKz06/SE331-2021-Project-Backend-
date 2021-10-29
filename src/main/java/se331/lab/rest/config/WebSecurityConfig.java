@@ -66,8 +66,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/auth/**",  "/refresh").permitAll()
 
                 //add more 5.1 plist without login
-                .antMatchers(HttpMethod.GET,"/plists").hasAnyRole("PATIENT", "ADMIN","DOCTOR")
-                .antMatchers(HttpMethod.GET,"/plists/**").hasAnyRole("PATIENT", "ADMIN","DOCTOR")
+                .antMatchers(HttpMethod.GET,"/plists").hasAnyRole("PATIENT", "ADMIN")
+                .antMatchers(HttpMethod.GET,"/plists/**").hasAnyRole("PATIENT","ADMIN","DOCTOR")
                 //add more 5.2 doctor
                 .antMatchers(HttpMethod.GET,"/doctors").hasAnyRole("ADMIN","DOCTOR")
                 .antMatchers(HttpMethod.GET,"/doctors/**").hasAnyRole("ADMIN","DOCTOR")

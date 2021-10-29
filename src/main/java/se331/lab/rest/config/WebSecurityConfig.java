@@ -77,6 +77,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST,"/set-role/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET,"/patients-in-care/**").hasAnyRole("ADMIN","DOCTOR")
                 .antMatchers(HttpMethod.GET,"/vaccine").permitAll()
+                .antMatchers(HttpMethod.GET,"/doctors-post-comment").hasAnyRole("ADMIN","DOCTOR")
+
+
 
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .anyRequest().authenticated();

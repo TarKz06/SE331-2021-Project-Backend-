@@ -17,4 +17,5 @@ public interface DoctorService {
     Page<Patient> getPatientInCares(Doctor doctor, Integer pageSize, Integer page);
 
     Page<Doctor> getDoctors(String title, Pageable pageable);
+    Patient doctorPostComment(String message, Patient patientComment, Doctor doctorComment);
 }

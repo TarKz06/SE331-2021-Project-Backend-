@@ -26,6 +26,8 @@ public class Doctor {
     @OneToMany(mappedBy = "doctor")
     @Builder.Default
     List<Patient> ownPatients = new ArrayList<>();
+    @OneToMany(mappedBy = "doctorComment")
+    List<Comment> postCommentList;
     @OneToOne(cascade=CascadeType.ALL)
     User user;
 

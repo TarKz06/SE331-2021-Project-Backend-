@@ -52,4 +52,8 @@ public class DoctorServiceImpl implements DoctorService {
         return doctorDao.getDoctor(title,pageable);
     }
 
+    public Patient doctorPostComment(String message, Patient patientComment, Doctor doctorComment){
+        return doctorDao.doctorPostComment(message, patientComment, doctorComment);
+    }
+
 }

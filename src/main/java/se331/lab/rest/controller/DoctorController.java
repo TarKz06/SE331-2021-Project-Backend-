@@ -10,9 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import se331.lab.rest.entity.Doctor;
+import se331.lab.rest.entity.Patient;
 import se331.lab.rest.service.DoctorService;
+import se331.lab.rest.service.PatientService;
 import se331.lab.rest.service.UserService;
 import se331.lab.rest.util.LabMapper;
+import se331.lab.rest.util.test.TestForm;
 
 @Controller
 public class DoctorController {
@@ -21,6 +24,9 @@ public class DoctorController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    PatientService patientService;
 
     @GetMapping("doctors")
     public ResponseEntity<?> getDoctorLists(@RequestParam(value = "_limit", required = false) Integer perPage
@@ -60,6 +66,15 @@ public class DoctorController {
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The given id is not found");
         }
+    }
+
+    @PostMapping("doctors-post-comment")
+    public ResponseEntity<?> getDoctor(@RequestBody TestForm testForm) {
+
+        Doctor doctorComment = doctorService.getDoctor(testForm.getDoctorComment());
+        Patient patientComment = patientService.getPatient(testForm.getPatientComment());
+        Patient output = doctorService.doctorPostComment(testForm.getMessage(), patientComment, doctorComment);
+        return ResponseEntity.ok(LabMapper.INSTANCE.getPatientDto(output));
     }
     
 }

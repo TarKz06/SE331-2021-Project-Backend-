@@ -33,6 +33,9 @@ public class Patient {
     @Builder.Default
     List<Vaccine> vaccines = new ArrayList<>();
 
+    @OneToMany(mappedBy = "patientComment")
+    List<Comment> receiveCommentList;
+
     String imageUrls;
 
     @OneToOne(cascade=CascadeType.ALL)

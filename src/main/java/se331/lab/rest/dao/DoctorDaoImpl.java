@@ -7,7 +7,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import se331.lab.rest.entity.Doctor;
+import se331.lab.rest.entity.Patient;
 import se331.lab.rest.repository.DoctorRepository;
+import se331.lab.rest.repository.PatientRepository;
 
 import java.util.Optional;
 
@@ -16,6 +18,9 @@ public class DoctorDaoImpl implements DoctorDao{
 
     @Autowired
     DoctorRepository doctorRepository;
+
+    @Autowired
+    PatientRepository patientRepository;
 
     @Override
     public Integer getDoctorSize() {
@@ -30,6 +35,11 @@ public class DoctorDaoImpl implements DoctorDao{
     @Override
     public Doctor getDoctor(Long id) {
         return doctorRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Page<Patient> getPatientInCares(Doctor doctor, Integer pageSize, Integer page) {
+        return patientRepository.findByDoctor(doctor,PageRequest.of(pageSize,page));
     }
 
     @Override
